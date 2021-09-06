@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+<div class="container-fluid banner texto">
+	<img src="{% static 'img/logo_pagprincipal.png' %}" class="img-fluid" style="margin-left: 10px;">
+	<br>
+	<div class="invitation">
+		<p class="">¡Juega con nosotros!</p>
+		<!-- verificamos si esta autenticado -->
+		{% if not request.user.is_authenticated %}
+		<a href="{% url 'login' %}">
+			<button class="btn-invitation" type="button" style="font-weight: bold;">Iniciar Sesión</button>
+		</a>
+		{% else %}
+		<a href="{% url 'play:playQuiz' %}">
+			<button class="btn-invitation" type="button" style="font-weight: bold; padding: 10px 20px;">Jugar</button>
+		</a>
+		{% endif %}
+	</div>
+
+
+</div>
+{% endblock contenido %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="d-flex register justify-content-center align-items-center">
+    <div class="form-wrapper rounded">
+        <form id="style-form" action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button id="submit" type="submit">
+                Enviar
+            </button>
+            <div class="text-center">
+                <a href="{% url 'login' %}"> Ya tengo un usuario</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}

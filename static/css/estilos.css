@@ -1,0 +1,201 @@
+::-webkit-scrollbar {
+    width: 15px;     /* Tamaño del scroll en vertical */
+    height: 15px;    /* Tamaño del scroll en horizontal */
+}
+::-webkit-scrollbar-thumb {
+    background: #f19970;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f87234;
+}
+::-webkit-scrollbar-track {
+    background: #f1cfbf;
+}
+.navbar {
+    height: 120px;
+	background-color: #fb5607;
+	font-family: 'Gloria Hallelujah';
+}
+
+#navbarNav ul li a {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 110%;
+	padding: 25px 20px;
+	-webkit-border-radius: 75px 75px 75px 75px;
+	border-radius: 75px 75px 75px 75px;
+}
+
+#navbarNav ul li a:hover {
+	background-color: rgba(244, 132, 152, 0.7);
+	color: #FAE1DD;
+	font-weight: bold;
+}
+.banner {
+    height: calc(100vh - 120px);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/back.jpg);
+    background-size:calc(100vh - 120px);
+    background-position: left;
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    /* background: linear-gradient(135deg,#fb5607 50%, orange 50%, cyan); */
+}
+.invitation {
+    margin-left: 300px;
+}
+.btn-invitation {
+    padding: 8px;
+    border: 2px solid #fb5607;
+    color: black;
+    border-radius: 10px;
+}
+.btn-invitation:hover {
+    background-color: #fb5607;
+    border: 2px solid #f56726;
+    color: white;
+    border-radius: 10px;
+}
+.img-fluid {
+    float: right;
+    max-width: 500px;
+    max-height: 400px;
+    padding-left: 300px;
+
+}
+ .container-fluid.imagen {
+	text-align: center;
+}
+
+.footer {
+    height: 100px;
+    background-color: white;
+}
+.container-fluid.texto{
+	text-align: center;
+	color: black;
+	font-family: 'Gloria Hallelujah';
+	font-weight: bold;
+	font-size: 160%;
+}
+.footer>ul {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+.footer > ul > li {
+    display: inline;
+    margin: 15px;
+}
+/*
+.container-fluid.footer ul {
+	margin-top: 70px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.container-fluid.footer ul li {
+	display: inline;
+}
+
+.container-fluid.footer ul li a {
+	margin-right: 10px;
+} */
+
+/* FORM */
+.register {
+    min-height: calc(100vh - 100px);
+    background-color: rgb(221, 226, 233);
+}
+.form-wrapper {
+    width: 500px;
+    padding: 35px;
+    background-color: white;
+}
+
+#style-form {
+    display: flex;
+    flex-wrap:wrap;
+     justify-content: center;
+}
+#style-form > .errorlist {
+    list-style: none;
+    color: rgb(190, 63, 63);
+    font-size: 13px;
+}
+#style-form > p {
+    width: 500px !important;
+}
+#style-form > p > input {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #D3D8DC;
+    outline: 0;
+    background: #fff;
+    padding: 20px 0 4px;
+    color: #777B7E;
+}
+#style-form > p > input:focus {
+    border-color: #fb5607;
+    color: #2C3238;
+  }
+
+#style-form > button#submit {
+    margin: 15px 0px;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    background: #fb5607;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    opacity: 1;
+    transition: .35s linear;
+}
+  
+#style-form > button#submit:hover {
+    opacity: .6;
+}
+#style-form > div > a {
+    color: rgb(36, 34, 34);
+    text-decoration: none;
+}
+#style-form > div > a:hover {
+    color: #fb5607;
+    text-decoration: none;
+}
+
+/* paginator */
+.bt-paginator {
+    border: 1px solid #fb5607;
+    border-radius: 4px;
+    padding: 10px 10px;
+    color: #fb5607;
+    margin: 10px;
+}
+.bt-paginator:hover {
+    text-decoration: none;
+    color: white;
+    background-color: #fb5607;
+}
+.block-central {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+}
+.text-justify {
+    text-align: justify;
+  }
+.text-shared {
+    color: gray;
+    margin-right: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+}

@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+
+{% if pregunta is None %}
+<script type="text/javascript">
+
+</script>
+<div class="container block-central">
+    <div class="jumbotron my-4" style="font-family: 'Gloria Hallelujah'; text-align: center; background-color: #FFDE70">
+        <h1 style="font-weight: bold; color: #FB5607; font-size: 300%;">¡Felicidades!</h1>
+        <p style="font-weight: bold; font-size: 130%;">¡Has raspondido todas las preguntas existentes!</p>
+        <a href="{% url 'ranking:ranking' %}">
+            <button class="btn"
+                style="font-weight: bold; margin-right: 20px; border-color: #259379; border-width: 5px; background-color: #3BCEAC; font-size: 120%;">Ver
+                el ranking</button>
+        </a>
+        <a href="{% url 'play:reset' %}">
+            <button class="btn"
+                style="font-weight: bold; border-color: hsl(39, 85%, 37%); border-width: 5px; background-color: #eecb2f; font-size: 120%;">Jugar
+                otra vez</button>
+        </a>
+    </div>
+</div>
+
+{% else %}
+<input type="hidden" id="categoria" name="categoria" value="{{ pregunta.categoria_id }}">
+
+
+<div class="container justify-content-center align-items-center block-central">
+    <div class=" d-inline-flex justify-content-center align-items-center">
+        <div class="jumbotron my-4" style="min-height: 400px; width: 800px; background-color: #FFD95C;">
+
+
+
+            <form class="form" name="form" action="" method="post">
+                <div id="question">
+                    <div hidden>
+                        <h3 style="font-family: 'Gloria Hallelujah'; font-weight: bold;">{{pregunta.texto}}</h3>
+                        {% csrf_token %}
+                        <input type="hidden" name="pregunta_pk" value="{{pregunta.pk}}">
+                        {% for opciones in pregunta.opciones.all %}
+                        <div class="form-check mx-4">
+                            <input type="radio" class="form-check-input" name="respuesta_pk" value="{{opciones.pk}}"
+                                id="choice-{{forloop.counter}}" style="margin-top: 30px;">
+
+                            <label for="choice-{{forloop.counter}}" class="form-check-label"
+                                style="font-family: 'Gloria Hallelujah'; font-weight: bold; font-size: 130%; margin-top: 20px;">
+                                {{opciones.texto}}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col text-center" id="btn-send">
+                        <div hidden>
+                            <button class="btn" style="width: 250px; font-family: 'Gloria Hallelujah'; font-weight: bold; background-color: #FB5607; border-color: #FB5607; margin-top: 50px; font-size: 120%; color: #FFFFFF;">Validar mi respuesta</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="submit" class="btn btn-success justify-content-center">Enviar</button> -->
+            </form>
+
+
+
+
+        </div>
+
+        <div class="span4">
+            <div class="roulette_container">
+                <div class="roulette ml-3" style="display:none; margin-top: 20px;">
+                    <img src="{% static 'img/historia.png' %}" />
+                    <img src="{% static 'img/ciencia_y_educacion.png' %}" />
+                    <img src="{% static 'img/cultura_y_arte.png' %}" />
+                    <img src="{% static 'img/deportes.png' %}" />
+                    <img src="{% static 'img/economia.png' %}" />
+                    <img src="{% static 'img/entretenimiento.png' %}" />
+                    <img src="{% static 'img/geografia.png' %}" />
+                </div>
+            </div>
+            <div class="btn_container">
+                <p>
+                    <button class="btn start"
+                        style="margin-left: 80px; margin-top: 20px; font-family: 'Gloria Hallelujah'; font-weight: bold; font-size: 150%; color: #FFFFFF; background-color: #3BCEAC; width: 200px; border-color: #3BCEAC">¡Gira!</button>
+                    <!-- <button class="stop btn-large btn btn-warning"> STOP </button> -->
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="text-center d-flex justify-content-center" style="margin-bottom: 300px;">
+        <p class="text-shared" style="font-family: 'Gloria Hallelujah';">¿Nos ayudas compartiendo el juego?</p>
+        <div class="text-center sharethis-inline-share-buttons"></div>
+    </div>
+</div>
+
+{% endif %}
+
+
+
+{% endblock %}

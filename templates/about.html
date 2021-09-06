@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<div class="container block-central">
+    <div class="jumbotron my-4" style="font-family: 'Gloria Hallelujah';  font-weight: bold; font-size: 130%; background-color: #EBEBEB; color: #5C5C5C;">
+        <h3 style="font-weight: bold; color: #FB5607; font-size: 150%;">¡Hola!</h3>
+        <br>
+        <h5 style="font-weight: bold; font-size: 110%;">¿Sabías que estamos de celebración? ¡Nuestra provincia cumple <a style="color: #ffd23f;">70 años</a> y lo queremos festejar con vos!</h5>
+        <br>
+        <p class="text-justify">
+            El domingo <a style="color: #3bceac;">8 de agosto</a> se cumplieron 70 años desde que en <a style="color: #0ead69;">1951</a> se sancionara la <a style="color: #540d6e;">Ley N°14037</a> que
+            declaró como <a style="color: #ee4266;">Provincia</a> al Territorio Nacional del Chaco. Con motivo de ese hecho histórico,
+            el <a style="color: #FB5607;">Gobierno del Chaco</a> junto al <a style="color: #ffd23f;">Instituto de Cultura del Chaco (ICCH)</a> celebraron y dieron inicio
+            a una agenda diseñada y organizada desde la <a style="color: #3bceac;">Comisión por la Provincialización del Chaco</a>, integrada
+            por un equipo de referentes de nuestra historia, de nuestra cultura y política.
+        </p>
+        <p class="text-justify">
+            Este juego lo queremos compartir con vos, <a style="color: #ee4266;">¡para conmemorar esta fecha de
+            forma poco convencional!</a>
+            Esperamos que te diviertas y aprendas sobre la <a style="color: #fb5607;">historia</a>, <a style="color: #540d6e;">cultura</a> y otros
+            rubros interesantes sobre nuestra provincia del Chaco.
+        </p>
+        <p class="text-right mr-5" style="color: #0ead69;">¡Muchas gracias!</p>
+    </div>
+    <div class="jumbotron my-4" style="font-family: 'Gloria Hallelujah';  font-weight: bold; background-color: #EBEBEB; color: #5C5C5C;">
+        <h3 style="font-weight: bold; color: #FB5607; text-decoration: underline; text-decoration-style: wavy;">Modo de juego</h3>
+        <ol style="margin-top: 30px; font-size: 140%;">
+            <li>Para iniciar a jugar, ¡tendrás que <a href="{% url 'register' %}" style="color: #FB5607;">registrarte</a> primero!</li>
+            <li>Una vez registrado, <a href="{% url 'login' %}" style="color: #FB5607;">inicia tu sesión</a>.</li>
+            <li>¡Es hora de comenzar tu partida! ¡Presiona <a href="{% url 'play:playQuiz' %}" style="color: #FB5607;">'Jugar'</a>!</li>
+            <li>Para recibir tu primera pregunta, primero debemos definir la categoría... Presiona '<a style="color: #FB5607;">¡Girar!</a>' para darle una vuelta a la ruleta.</li>
+            <li>Las <a style="color: #FB5607;">cateogrías</a> disponibles son las siguientes:
+                <ul>
+                    <li style="color: #540D6E;">Ciencia y educación
+                        <br>
+                        <a><img src="{% static 'img/ciencia_y_educacion.png' %}" /></a>
+                    </li>
+                    <li style="color: #FF0054;">Cultura y arte
+                        <br>
+                        <a><img src="{% static 'img/cultura_y_arte.png' %}" /></a>
+                    </li>
+                    <li style="color: #0ead69;">Deportes
+                        <br>
+                        <a><img src="{% static 'img/deportes.png' %}" /></a>
+                    </li>
+                    <li style="color: #FB5607;">Economía
+                        <br>
+                        <a><img src="{% static 'img/economia.png' %}" /></a>
+                    </li>
+                    <li style="color: #ee4266;">Entretenimiento
+                        <br>
+                        <a><img src="{% static 'img/entretenimiento.png' %}" /></a>
+                    </li>
+                    <li style="color: #ffd23f;">Geografía
+                        <br>
+                        <a><img src="{% static 'img/geografia.png' %}" /></a>
+                    </li>
+                    <li style="color: #3bceac;">Historia
+                        <br>
+                        <a><img src="{% static 'img/historia.png' %}" /></a>
+                    </li>
+                </ul>
+            </li>
+            <li>Una vez seleccionada la <a style="color: #FB5607;">categoría</a>, una pregunta de la misma aparecerá para que la <a style="color: #FB5607;">respondas</a>.</li>
+            <li>Elige entre las <a style="color: #FB5607;">tres opciones</a> la que creas sea la respuesta <a style="color: #FB5607;">correcta</a>.</li>
+            <li>Presiona <a style="color: #FB5607;">'Validar mi respuesta'</a>.</li>
+            <li>Se te informará si la pregunta es <a style="color: #0ead69;">correcta</a> o <a style="color: #d00000;">incorrecta</a>. Para seguir jugando presiona <a style="color: #FB5607;">'Siguiente pregunta'</a>.</li>
+            <li>¡Continúa hasta que respondas <a style="color: #FB5607;">todas</a> las preguntas disponibles!</li>
+        </ol>
+    </div>
+</div>
+{% endblock contenido %}

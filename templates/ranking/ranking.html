@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container block-central">
+    <h1 class="text-center my-4">
+        <span class="badge badge-pill badge-degrade">
+            Lista de puntajes de los jugadores:
+        </span>
+    </h1>
+    <table class="table table-striped table-bodered">
+        <thead>
+            <tr>
+                <th>Posición</th>
+                <th>Usuario</th>
+                <th>Puntaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in page_obj %}
+            {# Each "u" is a QuizUsuario model object. #}
+            <tr>
+                <th>{{ page_obj.start_index|add:forloop.counter0 }}</th>
+                <th>{{u.usuario.username}}</th>
+                <th>{{u.puntaje_total}}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="pagination d-flex justify-content-center mt-5">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a class="bt-paginator" href="?page=1">&laquo; first</a>
+            <a class="bt-paginator" href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Pagina {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+            <a class="bt-paginator" href="?page={{ page_obj.next_page_number }}">next</a>
+            <a class="bt-paginator" href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}

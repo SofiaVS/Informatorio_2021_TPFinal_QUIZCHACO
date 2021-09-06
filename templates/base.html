@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>{{ titulo }}</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+	<script src="{% static 'js/roulette.js' %}"></script>
+	<script src="{% static 'js/demo.js' %}"></script>
+	<!-- scripts sharethis -->
+	<script type="text/javascript"
+		src="https://platform-api.sharethis.com/js/sharethis.js#property=612fc350ee93c8001206f344&product=inline-share-buttons"
+		async="async"></script>
+</head>
+
+<body>
+
+	<header>
+
+		<nav class="navbar navbar-expand-lg navbar-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'img/logo.png' %}" alt=""
+						width="120" height="70"></a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'about' %}">Acerca de</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'ranking:ranking' %}">Ranking</a>
+						</li>
+						<!-- verificamos si esta autenticado -->
+						{% if not request.user.is_authenticated %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'register' %}">Regístrate</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
+						</li>
+						{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'logout' %}">Salir</a>
+						</li>
+						<li class="nav-item" id="primero">
+							<a class="nav-link active" href="{% url 'play:playQuiz' %}"
+								style="font-size: 150%; padding: 16px 15px; border: 5px dotted #FFFFFF; margin-left: 5px;">Jugar</a>
+						</li>
+						{% endif%}
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+	</header>
+	<!-- mostramos cada unos de los mensajes existentes -->
+	{% for message in messages %}
+	<div class="container-fluid p-0">
+		<div class="alert {{ message.tags }} alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			{{ message }}
+		</div>
+	</div>
+	{% endfor %}
+
+	{% block contenido %}
+
+	{% endblock contenido %}
+
+
+
+	<footer>
+		<div class="container-fluid footer">
+			<ul>
+				<li><a href="https://es-la.facebook.com/informatorio/" target="new"><img src="{% static 'img/facebook.svg' %}" height="30" width="30" /></a>
+				</li>
+				<li><a href="https://www.instagram.com/informatorio/?hl=es-la" target="new"><img src="{% static 'img/instagram.svg' %}" height="30" width="30" /></a>
+				</li>
+				<li><a href="https://twitter.com/informatorioch?lang=es" target="new"><img src="{% static 'img/twitter.svg' %}" height="30" width="30" /></a></li>
+			</ul>
+		</div>
+	</footer>
+
+</body>
+
+</html>

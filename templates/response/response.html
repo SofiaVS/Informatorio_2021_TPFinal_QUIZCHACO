@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<div class="container block-central" style="font-family: 'Gloria Hallelujah';">
+    <div class="jumbotron my-4" style=" background-color: #FFDE70;">
+        <h3 class="text-info" style="text-align: center;">
+            <p style="color: #000000; font-weight: bold;">{{respondida.pregunta.texto|safe}}</p>
+            <p style="text-decoration: underline; text-decoration-style: wavy; color: #fb5607; font-size: 80%; margin-top: 40px;  font-weight: bold;"> Tu respuesta:</p>
+            <p style="color: #fb5607; font-size: 120%; font-weight: bold;">{{respondida.respuesta.texto|safe}}</p>
+        </h3>
+        {% if respondida.respuesta.correcta %}
+        <h4 style="color: #0ead69; margin-top: 30px; font-weight: bold; font-size: 200%;  text-align: center;">¡Has respondido correctamente!</h4>
+        {% else %}
+        <h4 style="text-align: center; margin-top: 30px; font-weight: bold; font-size: 200%; color: #d00000;">¡Ups! Tu respuesta es incorrecta</h4>
+        {% for respuesta in respondida.pregunta.opciones.all %}
+        {% if respuesta.correcta %}
+        <p style="font-weight: bold; text-align: center; margin-top: 50px; font-size: 130%;">La respuesta correcta es:</p> 
+        <p style="font-weight: bold; text-align: center; color: #0ead69; font-size: 130%; margin-top: -20px;">{{respuesta}}</p>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+
+        <a href="{% url 'play:playQuiz' %}">
+            <button class="btn" style="background-color: #fb5607; border-color: #fb5607; color: #FFFFFF; font-weight: bold; font-size: 120%; margin-top: 50px; width: 500px; margin-left: 280px;">
+                Siguiente pregunta
+            </button>
+        </a>
+    </div>
+
+</div>
+{% endblock %}
